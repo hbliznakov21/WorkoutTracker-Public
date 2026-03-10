@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Xcode
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+DerivedData/
+build/
+
+# Secrets — copy Config.plist.example to Config.plist and fill in your keys
+WorkoutTracker/Config.plist
+WorkoutTracker/Config-Sonya.plist
