@@ -108,6 +108,45 @@ open WorkoutTracker.xcodeproj
 ```
 Select the **WorkoutTracker** scheme, pick your device or simulator, and run.
 
+### 5. Build your routines with Claude (optional)
+
+You don't need to enter exercises one by one. **Ask Claude to build your entire program** and generate the SQL to populate your database.
+
+Any split works — PPL, Upper/Lower, Full Body, Bro Split, 5/3/1, PHUL, PHAT, or your own custom structure. The app doesn't care about the split; it just tracks whatever routines you create.
+
+Give Claude:
+1. Your training split and exercises
+2. Target sets, rep ranges, and rest periods
+3. Any supersets (group them with letters: A, B, C)
+4. The Supabase schema (share `supabase-setup.sql`)
+
+Example prompt:
+```
+I run a PPL split 6 days/week. Here are my routines:
+
+Push (Mon): Bench Press 4x8-10, Incline DB Press 3x10-12, ...
+Pull (Tue): Barbell Row 4x8-10, Lat Pulldown 3x10-12, ...
+Legs (Wed): Squat 4x6-8, RDL 3x10-12, ...
+
+Generate SQL INSERT statements for the exercises, routines,
+routine_exercises, and weekly_schedule tables.
+Use 90s rest for compounds, 60s for isolation.
+Superset the lateral raises with face pulls (group "A").
+```
+
+Claude will generate ready-to-paste SQL. Run it in your Supabase SQL Editor and your routines are loaded — complete with exercise order, rep targets, rest timers, and superset groups.
+
+### 6. Deload weeks
+
+The app tracks training weeks automatically. After every 2 consecutive training weeks, it suggests a deload week — reduced volume at the same weight to allow recovery.
+
+When you activate deload mode:
+- The app reminds you to reduce volume (fewer sets, same weight)
+- The counter resets after the deload week
+- You can dismiss the suggestion if you're not ready
+
+This is built in and requires no configuration.
+
 ---
 
 ## Project Structure
